@@ -9,6 +9,8 @@ local Frame = CoreGui.ScreenGui:GetChildren()[2]
 local GUI = {}
 GUI.__index = GUI
 
+-- [[ GUI Functions ]]
+
 function GUI.Create()
   local Frame = game:GetService("CoreGui").ScreenGui:GetChildren()[2]
 
@@ -58,7 +60,7 @@ function GUI.Create()
   end)
 end
 
-function GUI.Init()
+function GUI:Init()
   local MinimizeGUI = PlayerGui:FindFirstChild("Minimize_GUI")
   
   if MinimizeGUI then
