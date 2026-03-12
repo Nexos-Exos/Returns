@@ -1,5 +1,7 @@
 --[[
 GUI created with LocalMaze GUI Creator
+
+Raw Url: https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Notify%20System.lua
 ]]
 
 -- [[ VARIABLES ]]
@@ -28,23 +30,23 @@ local Handler = PlayerGui:FindFirstChild("Notify_Holder")
 UI.__index = UI
 
 function UI:Create()
-  local ScreenGUI = Instance.new("ScreenGui")
+  ScreenGUI = Instance.new("ScreenGui")
   Handler = ScreenGUI
   ScreenGUI.Name = "Notify_Holder"
   ScreenGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
   ScreenGUI.Parent = PlayerGui
     
-  local Main_Frame = Instance.new("Frame")
+  Main_Frame = Instance.new("Frame")
   Main_Frame.Name = "Main Frame"
   Main_Frame.AnchorPoint = Vector2.new(0.5, 0.5)
   Main_Frame.Size = UDim2.new(0, 238, 0, 316)
-  Main_Frame.Position = UDim2.new(0, 1100, 0, 225)
+  Main_Frame.Position = UDim2.new(0, 1050, 0, 225)
   Main_Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
   Main_Frame.BackgroundTransparency = 1
   Main_Frame.BorderSizePixel = 0
   Main_Frame.Parent = ScreenGUI
   
-  local List_Layout = Instance.new("UIListLayout")
+  List_Layout = Instance.new("UIListLayout")
   List_Layout.VerticalAlignment = Enum.VerticalAlignment.Bottom
   List_Layout.Parent = Main_Frame
     
@@ -52,6 +54,7 @@ function UI:Create()
   Label.Name = "Label"
   Label.Size = UDim2.new(0, 0, 0, 0)
   Label.Position = UDim2.new(0, 4, 0, 4)
+  Label.TextScaled = true
   Label.TextTransparency = 1
   Label.BackgroundTransparency = 1
   Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
