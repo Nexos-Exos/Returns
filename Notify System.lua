@@ -54,6 +54,7 @@ function UI:Create()
   Label.Name = "Label"
   Label.Size = UDim2.new(0, 0, 0, 0)
   Label.Position = UDim2.new(0, 4, 0, 4)
+  Label.RichText = true
   Label.TextScaled = true
   Label.TextTransparency = 1
   Label.BackgroundTransparency = 1
