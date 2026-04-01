@@ -90,6 +90,7 @@ local layout = Instance.new("UIListLayout")
 layout.Parent = GUI.Tab
 layout.Wraps = true
 layout.Padding = UDim.new(0.05, 0)
+layout.SortOrder = Enum.SortOrder.LayoutOrder
 layout.FillDirection = Enum.FillDirection.Horizontal
 
 function GUI:Button(Info: Table)
