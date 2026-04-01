@@ -29,7 +29,7 @@ ToggleStroke.Thickness = 2
 ToggleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 ToggleStroke.Color = Color3.fromRGB(143, 143, 143)
 
-GUI.Toggle.Text = "Toggle [State]"
+GUI.Toggle.Text = "Toggle [OFF]"
 GUI.Toggle.TextSize = 12
 GUI.Toggle.FontFace = Font.new(
   "rbxasset://fonts/families/Zekton.json",
@@ -47,7 +47,13 @@ GUI.Toggle.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
 GUI.Toggle.BorderSizePixel = 0
 
 GUI.Toggle.MouseButton1Click:Connect(function()
-  GUI.Main.Visible = not GUI.Main.Visible
+  if GUI.Toggle.Text == "Toggle [OFF]" then
+    GUI.Toggle.Text = "Toggle [ON]"
+    GUI.Main.Visible = not GUI.Main.Visible
+    else
+      GUI.Toggle.Text = "Toggle [OFF]"
+      GUI.Main.Visible = not GUI.Main.Visible
+  end
 end)
 
 GUI.Main = Instance.new("Frame")
