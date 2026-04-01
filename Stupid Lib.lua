@@ -10,6 +10,7 @@ Designed using LocalMaze GUI Creator
 ]]--
 
 local GUI = {}
+GUI.Order = 0
 
 local Players = game:GetService("Players")
 local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -92,9 +93,12 @@ layout.Padding = UDim.new(0.05, 0)
 layout.FillDirection = Enum.FillDirection.Horizontal
 
 function GUI:Button(Info: Table)
+  GUI.Order += 1
+  
   local Button = Instance.new("TextButton")
   Button.Parent = GUI.Tab
   Button.Name = Info.Text
+  Button.LayoutOrder = GUI.Order
   Button.Size = UDim2.new(0.2, 0, 0.3, 0)
   Button.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
   Button.BackgroundTransparency = 0.3
