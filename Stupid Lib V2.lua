@@ -213,7 +213,7 @@ function Library:Init()
     local Label = Instance.new("TextLabel", GUI["HomeTab_13"]);
     Label["TextWrapped"] = true;
     Label["BorderSizePixel"] = 0;
-    Label["TextSize"] = 10;
+    Label["TextSize"] = 12;
     Label["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
     Label["FontFace"] = Font.new([[rbxasset://fonts/families/Arimo.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
     Label["TextColor3"] = Color3.fromRGB(255, 255, 255);
