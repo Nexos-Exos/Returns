@@ -46,7 +46,7 @@ function Library:Init()
     
     GUI["Toggle_2"] = Instance.new("TextLabel", GUI["ScreenGui_1"]);
     GUI["Toggle_2"]["BorderSizePixel"] = 0;
-    GUI["Toggle_2"]["TextSize"] = 14;
+    GUI["Toggle_2"]["TextSize"] = 12;
     GUI["Toggle_2"]["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
     GUI["Toggle_2"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arimo.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
     GUI["Toggle_2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
