@@ -46,7 +46,7 @@ function Library:Init()
     
     GUI["Toggle_2"] = Instance.new("TextLabel", GUI["ScreenGui_1"]);
     GUI["Toggle_2"]["BorderSizePixel"] = 0;
-    GUI["Toggle_2"]["TextSize"] = 14;
+    GUI["Toggle_2"]["TextSize"] = 12;
     GUI["Toggle_2"]["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
     GUI["Toggle_2"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arimo.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
     GUI["Toggle_2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
@@ -56,6 +56,20 @@ function Library:Init()
     GUI["Toggle_2"]["Text"] = [[Toggle (OFF)]];
     GUI["Toggle_2"]["Name"] = [[Toggle]];
     GUI["Toggle_2"]["Position"] = UDim2.new(0.99, 0, 0.5, 0);
+    
+    GUI["Texture_2"] = Instance.new("ImageLabel", GUI["Toggle_2"]);
+    GUI["Texture_2"]["ZIndex"] = 0;
+    GUI["Texture_2"]["BorderSizePixel"] = 0;
+    GUI["Texture_2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+    GUI["Texture_2"]["ImageTransparency"] = 0.8;
+    -- GUI["Texture_2"]["ImageContent"] = ;
+    GUI["Texture_2"]["Image"] = [[rbxassetid://131593587185640]];
+    GUI["Texture_2"]["Size"] = UDim2.new(1, 0, 1, 0);
+    GUI["Texture_2"]["BackgroundTransparency"] = 1;
+    GUI["Texture_2"]["Name"] = [[Texture]];
+
+
+    GUI["UICorner_3"] = Instance.new("UICorner", GUI["Texture_2"]);
     
     GUI["FrameStroke_3"] = Instance.new("UIStroke", GUI["Toggle_2"]);
     GUI["FrameStroke_3"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
@@ -92,6 +106,20 @@ function Library:Init()
     GUI["Main_9"]["Name"] = [[Main]];
     GUI["Main_9"]["Visible"] = false
     
+    GUI["Texture_9"] = Instance.new("ImageLabel", GUI["Main_9"]);
+    GUI["Texture_9"]["ZIndex"] = 0;
+    GUI["Texture_9"]["BorderSizePixel"] = 0;
+    GUI["Texture_9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+    GUI["Texture_9"]["ImageTransparency"] = 0.8;
+    -- GUI["Texture_2"]["ImageContent"] = ;
+    GUI["Texture_9"]["Image"] = [[rbxassetid://131593587185640]];
+    GUI["Texture_9"]["Size"] = UDim2.new(1, 0, 1, 0);
+    GUI["Texture_9"]["BackgroundTransparency"] = 1;
+    GUI["Texture_9"]["Name"] = [[Texture]];
+
+
+    GUI["UICorner_3"] = Instance.new("UICorner", GUI["Texture_9"]);
+    
     GUI["Button_4"].MouseButton1Click:Connect(function()
       if GUI["Toggle_2"]["Text"] == "Toggle (OFF)" then
         GUI["Toggle_2"]["Text"] = "Toggle (ON)"
@@ -116,6 +144,42 @@ function Library:Init()
     GUI["TopBar_b"]["Size"] = UDim2.new(1, 0, 0, 50);
     GUI["TopBar_b"]["Name"] = [[TopBar]];
     
+
+    GUI["Search_2"] = Instance.new("TextBox", GUI["TopBar_b"]);
+    GUI["Search_2"]["Name"] = [[Search]];
+    GUI["Search_2"]["BorderSizePixel"] = 0;
+    GUI["Search_2"]["TextSize"] = 12;
+    GUI["Search_2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+    GUI["Search_2"]["BackgroundColor3"] = Color3.fromRGB(81, 76, 94);
+    GUI["Search_2"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+    GUI["Search_2"]["AnchorPoint"] = Vector2.new(1, 0);
+    GUI["Search_2"]["PlaceholderText"] = [[Search...]];
+    GUI["Search_2"]["Size"] = UDim2.new(0, 150, 1, 0);
+    GUI["Search_2"]["Position"] = UDim2.new(1, 0, 0, 0);
+    GUI["Search_2"]["Text"] = [[]];
+    GUI["Search_2"]["BackgroundTransparency"] = 0.9;
+    
+    
+    GUI["UIPadding_3"] = Instance.new("UIPadding", GUI["Search_2"]);
+    
+    
+    
+    GUI["UICorner_4"] = Instance.new("UICorner", GUI["Search_2"]);
+    GUI["UICorner_4"]["CornerRadius"] = UDim.new(0, 4);
+
+    
+    GUI["Texture_B"] = Instance.new("ImageLabel", GUI["TopBar_b"]);
+    GUI["Texture_B"]["ZIndex"] = 0;
+    GUI["Texture_B"]["BorderSizePixel"] = 0;
+    GUI["Texture_B"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+    GUI["Texture_B"]["ImageTransparency"] = 0.8;
+    -- GUI["Texture_2"]["ImageContent"] = ;
+    GUI["Texture_B"]["Image"] = [[rbxassetid://131593587185640]];
+    GUI["Texture_B"]["Size"] = UDim2.new(1, 0, 1, 0);
+    GUI["Texture_B"]["BackgroundTransparency"] = 1;
+    GUI["Texture_B"]["Name"] = [[Texture]];
+
+    GUI["UICorner_3"] = Instance.new("UICorner", GUI["Texture_B"]);
     
     GUI["Corner_e"] = Instance.new("UICorner", GUI["Button_d"]);
     GUI["Corner_e"]["Name"] = [[Corner]];
@@ -199,6 +263,28 @@ function Library:Init()
     GUI["UIStroke_20"] = Instance.new("UIStroke", GUI["Main_9"]);
     GUI["UIStroke_20"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
     GUI["UIStroke_20"]["Thickness"] = 1.5;
+    
+    Search = function(text: string)
+      local Text = text:lower()
+      local ButtonsContainer = GUI["HomeTab_13"]
+      
+      for _, Buttons in ipairs(ButtonsContainer:GetChildren()) do
+        if Buttons:IsA("TextLabel") then
+          if string.match(Buttons.Text:lower(), Text) or Text == "" then
+            Buttons.Visible = true
+            else
+              Buttons.Visible = false
+          end
+          
+        end
+      end
+      
+      warn("Searching for:", Text)
+    end
+    
+    GUI["Search_2"].FocusLost:Connect(function()
+      Search(GUI["Search_2"].Text)
+    end)
   end
   
   -- // Methods
@@ -213,7 +299,7 @@ function Library:Init()
     local Label = Instance.new("TextLabel", GUI["HomeTab_13"]);
     Label["TextWrapped"] = true;
     Label["BorderSizePixel"] = 0;
-    Label["TextSize"] = 12;
+    Label["TextSize"] = 14;
     Label["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
     Label["FontFace"] = Font.new([[rbxasset://fonts/families/Arimo.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
     Label["TextColor3"] = Color3.fromRGB(255, 255, 255);
