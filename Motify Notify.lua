@@ -162,6 +162,14 @@ function UI:Notify(Info: table)
     UI:Typewrite(Info.Title, New_Title)
     UI:Typewrite(Info.Description, New_Desc)
     
+    while New_Title.Text ~= Info.Title do task.wait() end
+    
+    warn("Passed title")
+    
+    while New_Desc.Text ~= Info.Description do task.wait() end
+    
+    warn("Passed desc")
+    
     task.wait(Info.Duration)
     
     Play:Tween(New_Image, Tween_Infos.Fade_Out_Tween,
@@ -170,9 +178,7 @@ function UI:Notify(Info: table)
       Tween_Infos.Fade_Out_Properties.Text, true)
     
     New_Image:GetPropertyChangedSignal("ImageTransparency"):Connect(function()
-      if New_Image.ImageTransparency >= 0.9 then
-        New_Image:Destroy()
-      end
+      if New_Image.ImageTransparency >= 0.9 then New_Image:Destroy() end
     end)
     
   end)
