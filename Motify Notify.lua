@@ -1,12 +1,21 @@
 -- [[ VARIABLES ]]
 
+local OutputMessage=loadstring(game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Fancy%20Print.lua"))()
+
+local tspawn=task.spawn
+local twait=task.wait
+
+local game=game
+local FindFirstChild=game.FindFirstChild
+
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 local PlayerGui = Player.PlayerGui
 
 local TweenService = game:GetService("TweenService")
-local Tween_Infos = {
-  Fade_In_Tween = TweenInfo.new(
+local InfoNew = TweenInfo.new
+local Infos = {
+  Fade_In_Tween = InfoNew(
     1, Enum.EasingStyle.Circular,
     Enum.EasingDirection.Out),
   Fade_In_Properties = {
@@ -14,7 +23,7 @@ local Tween_Infos = {
     Text = {TextTransparency = 0}
   },
   
-  Fade_Out_Tween = TweenInfo.new(
+  Fade_Out_Tween = InfoNew(
     1.5, Enum.EasingStyle.Exponential,
     Enum.EasingDirection.InOut),
   Fade_Out_Properties = {
@@ -26,32 +35,26 @@ local Tween_Infos = {
 -- [[ FUNCTIONS ]]
 
 local UI = {}
-UI.__index = UI
-local UI_Name = "Motif Notify"
-local Handler = PlayerGui:FindFirstChild(UI_Name)
+UI["Name"] = "Motify"
+local Handler = FindFirstChild(PlayerGui, UI["Name"])
 
-local Play = {}
-Play.__index = Play
-
-function Play:Tween(UI_Object: Instance, Tween, Properties, Children: boolean)
-  if Children then
-    for _, Labels in UI_Object:GetChildren() do
-      if Labels:IsA("TextLabel") then
-        local Opacity_Anim = TweenService:Create(Labels, Tween, Properties)
-          Opacity_Anim:Play()
-      end
-    end
-  end
-  
+function Tween(UI_Object: Instance, Tween, Properties, Children: boolean)
   if not Children then
     local Opacity_Anim = TweenService:Create(UI_Object, Tween, Properties)
-    Opacity_Anim:Play()
+    return Opacity_Anim:Play()
+  end
+  
+  for _, Labels in next, UI_Object:GetChildren() do
+    if Labels:IsA("TextLabel") then
+      local Opacity_Anim = TweenService:Create(Labels, Tween, Properties)
+      return Opacity_Anim:Play()
+    end
   end
 end
 
 function UI:Create()
   local ScreenGui = Instance.new("ScreenGui")
-  ScreenGui.Name = UI_Name
+  ScreenGui.Name = UI["Name"]
   Handler = ScreenGui
   ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
   ScreenGui.Parent = PlayerGui
@@ -98,14 +101,13 @@ function UI:Create()
   )
   TitleLabel.Parent = Image
   
-  --// Description Label
   local DescLabel = Instance.new("TextLabel")
   DescLabel.Name = "DescLabel"
   DescLabel.Text = ""
   DescLabel.Size = UDim2.new(0.4, 0, 0.4, 0)
   DescLabel.Position = UDim2.new(0, 140, 0, 45)
   DescLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-  DescLabel.TextTransparency = 1
+  DescLabel.TextTransparency = 0
   DescLabel.BackgroundTransparency = 1
   DescLabel.BorderSizePixel = 0
   DescLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -122,25 +124,25 @@ end
 function UI:Init()
   if not Handler then
     UI:Create()
-    print('UI Created')
+    OutputMessage:Info("UI Created!")
   end
 end
 
-function UI:Typewrite(String, Label)
-  task.spawn(function()
+function UI:Typewrite(String: string, Label: Instance)
+  tspawn(function()
     local Substring = 1
     
-    task.wait(0.25)
+    twait(0.25)
     for Letters = 1, #String do
       local New_Letter = string.sub(String, 1, Substring)
       
       Label.Text = New_Letter
       Substring += 1
-      task.wait(0.1)
+      twait(0.1)
     end
+    
+    OutputMessage:Info("Typewrite Ended!")
   end)
-  
-  return task.wait(0.7)
 end
 
 function UI:Notify(Info: table)
@@ -154,31 +156,29 @@ function UI:Notify(Info: table)
   local New_Desc = New_Image.DescLabel
   New_Desc.Parent = New_Image
   
-  task.spawn(function()
-    Play:Tween(New_Image, Tween_Infos.Fade_In_Tween,
-      Tween_Infos.Fade_In_Properties.Image)
-    Play:Tween(New_Image, Tween_Infos.Fade_In_Tween,
-      Tween_Infos.Fade_In_Properties.Text, true)
+  tspawn(function()
+    Tween(New_Image, Infos.Fade_In_Tween,
+      Infos.Fade_In_Properties.Image)
+    Tween(New_Image, Infos.Fade_In_Tween,
+      Infos.Fade_In_Properties.Text, true)
     UI:Typewrite(Info.Title, New_Title)
     UI:Typewrite(Info.Description, New_Desc)
     
-    while New_Title.Text ~= Info.Title do task.wait() end
+    OutputMessage:Info("Sent Notification!")
     
-    warn("Passed title")
+    while New_Title.Text ~= Info.Title do twait() end
     
-    while New_Desc.Text ~= Info.Description do task.wait() end
+    while New_Desc.Text ~= Info.Description do twait() end
     
-    warn("Passed desc")
+    twait(Info.Duration)
     
-    task.wait(Info.Duration)
-    
-    Play:Tween(New_Image, Tween_Infos.Fade_Out_Tween,
-      Tween_Infos.Fade_Out_Properties.Image)
-    Play:Tween(New_Image, Tween_Infos.Fade_Out_Tween,
-      Tween_Infos.Fade_Out_Properties.Text, true)
+    Tween(New_Image, Infos.Fade_Out_Tween,
+      Infos.Fade_Out_Properties.Image)
+    Tween(New_Image, Infos.Fade_Out_Tween,
+      Infos.Fade_Out_Properties.Text, true)
     
     New_Image:GetPropertyChangedSignal("ImageTransparency"):Connect(function()
-      if New_Image.ImageTransparency >= 0.9 then New_Image:Destroy() end
+      if New_Image.ImageTransparency >= 0.95 then New_Image:Destroy() end
     end)
     
   end)
