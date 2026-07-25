@@ -1,7 +1,13 @@
 -- [[ VARIABLES ]]
 
+if not isfile("Motify Frame.jpg") then
+  local Encoded_Image = game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/image.txt")
+  writefile("Motify Frame.jpg", base64decode(Encoded_Image))
+end
+
 local OutputMessage=loadstring(game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Fancy%20Print.lua"))()
 
+local getcustomasset=getcustomasset
 local tspawn=task.spawn
 local twait=task.wait
 
@@ -79,7 +85,7 @@ function UI:Create()
   Image.BackgroundTransparency = 1
   Image.Visible = false
   Image.BorderSizePixel = 0
-  Image.Image = "rbxassetid://94350151984781"
+  Image.Image = getcustomasset("Motify Frame.jpg")
   Image.Parent = MainFrame
   
   local TitleLabel = Instance.new("TextLabel")
