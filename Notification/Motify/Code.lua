@@ -1,7 +1,7 @@
 -- [[ VARIABLES ]]
 
 if not isfile("Motify Frame.jpg") then
-  local Encoded_Image = game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/image.txt")
+  local Encoded_Image = game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Notification/Motify/Image")
   writefile("Motify Frame.jpg", base64decode(Encoded_Image))
 end
 
