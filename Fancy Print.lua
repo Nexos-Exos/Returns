@@ -1,3 +1,7 @@
+--[[
+Raw Url: https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Recolor%20Text.lua
+]]
+
 local MessageType = {}
 local Colors = {
   Cyan = "<font color='rgb(0,255,255)'>",
@@ -14,11 +18,11 @@ function MessageType:Info(Text)
 end
 
 function MessageType:Error(Text)
-  return print(Recolor_Text(Colors.Cyan, Text))
+  return print(Recolor_Text(Colors.Red, Text))
 end
 
 function MessageType:Warn(Text)
-  return print(Recolor_Text(Colors.Cyan, Text))
+  return print(Recolor_Text(Colors.Yellow, Text))
 end
 
 return MessageType
