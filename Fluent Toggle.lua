@@ -9,13 +9,13 @@ local Frame = CoreGui.ScreenGui:GetChildren()[2]
 
 local GUI = {}
 
--- [[ UI Functions ]]
+-- [[ GUI Functions ]]
 
 function GUI.Create()
-  local Frame = game:GetService("CoreGui").ScreenGui:GetChildren()[2]
+  local Frame = CoreGui.ScreenGui:GetChildren()[2]
 
   local ScreenGui = Instance.new("ScreenGui")
-  ScreenGui.Name = "Minimize_GUI"
+  ScreenGui.Name = "FluentToggle"
   ScreenGui.ResetOnSpawn = false
   ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
   ScreenGui.Parent = PlayerGui
@@ -61,7 +61,7 @@ function GUI.Create()
 end
 
 function GUI:Init()
-  local MinimizeGUI = PlayerGui:FindFirstChild("Minimize_GUI")
+  local MinimizeGUI = PlayerGui:FindFirstChild("FluentToggle")
   
   if MinimizeGUI then
     MinimizeGUI:Destroy()
