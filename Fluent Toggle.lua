@@ -1,24 +1,24 @@
 -- [[ UI Variables ]]
 
 local Player = game:GetService("Players").LocalPlayer
-local PlayerUI = Player.PlayerUI
+local PlayerGui = Player.PlayerGui
 
-local CoreUI = game:GetService("CoreUI")
-while not CoreUI.ScreenUI:GetChildren()[2] do task.wait() end
-local Frame = CoreUI.ScreenUI:GetChildren()[2]
+local CoreGui = game:GetService("CoreGui")
+while not CoreGui.ScreenUI:GetChildren()[2] do task.wait() end
+local Frame = CoreGui.ScreenUI:GetChildren()[2]
 
 local UI = {}
 
 -- [[ UI Functions ]]
 
 function UI.Create()
-  local Frame = CoreUI.ScreenUI:GetChildren()[2]
+  local Frame = CoreGui.ScreenUI:GetChildren()[2]
 
   local ScreenUI = Instance.new("ScreenUI")
   ScreenUI.Name = "FluentToggle"
   ScreenUI.ResetOnSpawn = false
   ScreenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  ScreenUI.Parent = PlayerUI
+  ScreenUI.Parent = PlayerGui
     
   local Minimize_Btn = Instance.new("TextButton")
   Minimize_Btn.Draggable = true
@@ -61,7 +61,7 @@ function UI.Create()
 end
 
 function UI:Init()
-  local ToggleUI = PlayerUI:FindFirstChild("FluentToggle")
+  local ToggleUI = PlayerGui:FindFirstChild("FluentToggle")
   
   if ToggleUI then
     ToggleUI:Destroy()
