@@ -4,26 +4,26 @@ local Player = game:GetService("Players").LocalPlayer
 local PlayerGui = Player.PlayerGui
 
 local CoreGui = game:GetService("CoreGui")
-while not CoreGui.ScreenUI:GetChildren()[2] do task.wait() end
-local Frame = CoreGui.ScreenUI:GetChildren()[2]
+while not CoreGui.ScreenGui:GetChildren()[2] do task.wait() end
+local Frame = CoreGui.ScreenGui:GetChildren()[2]
 
 local UI = {}
 
 -- [[ UI Functions ]]
 
 function UI.Create()
-  local Frame = CoreGui.ScreenUI:GetChildren()[2]
+  local Frame = CoreGui.ScreenGui:GetChildren()[2]
 
-  local ScreenUI = Instance.new("ScreenUI")
-  ScreenUI.Name = "FluentToggle"
-  ScreenUI.ResetOnSpawn = false
-  ScreenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  ScreenUI.Parent = PlayerGui
+  local ScreenGui = Instance.new("ScreenGui")
+  ScreenGui.Name = "FluentToggle"
+  ScreenGui.ResetOnSpawn = false
+  ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+  ScreenGui.Parent = PlayerGui
     
   local Minimize_Btn = Instance.new("TextButton")
   Minimize_Btn.Draggable = true
   Minimize_Btn.Name = "Minimize_Btn"
-  Minimize_Btn.Parent = ScreenUI
+  Minimize_Btn.Parent = ScreenGui
   Minimize_Btn.Size = UDim2.new(0, 76, 0, 56)
   Minimize_Btn.Position = UDim2.new(0, 754, 0, -26)
   Minimize_Btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
