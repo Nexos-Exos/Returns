@@ -4,7 +4,6 @@ local Player = game:GetService("Players").LocalPlayer
 local PlayerGui = Player.PlayerGui
 
 local CoreGui = game:GetService("CoreGui")
-while not CoreGui.ScreenGui:GetChildren()[2] do task.wait() end
 local Frame = CoreGui.ScreenGui:GetChildren()[2]
 
 local UI = {}
