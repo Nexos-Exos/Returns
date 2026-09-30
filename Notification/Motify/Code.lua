@@ -5,18 +5,19 @@ if not isfile("Motify Frame.jpg") then
   writefile("Motify Frame.jpg", base64decode(Encoded_Image))
 end
 
-local OutputMessage=loadstring(game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Fancy%20Print.lua"))()
+local OutputMessage = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nexos-Exos/Returns/refs/heads/main/Fancy%20Print.lua"))()
 
 local getcustomasset=getcustomasset
 local tspawn=task.spawn
 local twait=task.wait
 
 local game=game
+local FindFirstChildWhichIsA=game.FindFirstChildWhichIsA
 local FindFirstChild=game.FindFirstChild
 
-local Players = game:GetService("Players")
+local Players = FindFirstChildWhichIsA(game, "Players")
+local CoreGui = FindFirstChildWhichIsA(game, "CoreGui")
 local Player = Players.LocalPlayer
-local PlayerGui = Player.PlayerGui
 
 local TweenService = game:GetService("TweenService")
 local InfoNew = TweenInfo.new
@@ -42,7 +43,7 @@ local Infos = {
 
 local UI = {}
 UI["Name"] = "Motify"
-local Handler = FindFirstChild(PlayerGui, UI["Name"])
+local Handler = FindFirstChild(CoreGui, UI["Name"])
 
 function Tween(UI_Object: Instance, Tween, Properties, Children: boolean)
   if not Children then
@@ -63,7 +64,7 @@ function UI:Create()
   ScreenGui.Name = UI["Name"]
   Handler = ScreenGui
   ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  ScreenGui.Parent = PlayerGui
+  ScreenGui.Parent = CoreGui
   
   local MainFrame = Instance.new("Frame")
   MainFrame.Name = "MainFrame"
