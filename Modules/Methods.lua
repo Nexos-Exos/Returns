@@ -27,5 +27,3 @@ for i, v in pairs(Module) do
   getgenv()[i] = v
   task.wait(.05)
 end
-
-return Module
