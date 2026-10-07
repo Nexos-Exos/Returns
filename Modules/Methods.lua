@@ -17,7 +17,7 @@ local Module = {
     ["FindFirstChildOfClass"] = game.FindFirstChildOfClass,
     ["workspace"] = game:FindFirstChildOfClass("Workspace"),
     ["CoreGui"] = game:FindFirstChildOfClass("StarterGui"),
-    ["ReplicatedStorage"] = FindFirstChildOfClass(game, "ReplicatedStorage"),
+    ["ReplicatedStorage"] = game:FindFirstChildOfClass("ReplicatedStorage"),
     ["Players"] = game:FindFirstChildOfClass("Players"),
     ["Player"] = game:FindFirstChildOfClass("Players").LocalPlayer
 }
