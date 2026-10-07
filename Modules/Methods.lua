@@ -11,7 +11,7 @@ local Module = {
     ["tdelay"] = task.delay,
     ["tdefer"] = task.defer,
     ["NewVector3"] = Vector3.new,
-    ["NewInstance"] Instance.new,
+    ["NewInstance"] = Instance.new,
     ["FindFirstChild"] = game.FindFirstChild,
     ["FindFirstChildWhichIsA"] = game.FindFirstChildWhichIsA,
     ["FindFirstChildOfClass"] = game.FindFirstChildOfClass,
