@@ -69,8 +69,8 @@ function UI:Create()
   local MainFrame = Instance.new("Frame")
   MainFrame.Name = "MainFrame"
   MainFrame.Size = UDim2.new(0, 238, 0, 316)
-  MainFrame.Position = UDim2.new(0, 1060, 0, 225)
-  MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+  MainFrame.AnchorPoint = Vector2.new(1, 0.5)
+  MainFrame.Position = UDim2.new(0.98, 0, 0, 225)
   MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
   MainFrame.BackgroundTransparency = 1
   MainFrame.BorderSizePixel = 0
