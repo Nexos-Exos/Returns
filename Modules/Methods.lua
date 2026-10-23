@@ -32,6 +32,9 @@ local Module = {
     ["tdelay"]                        = task.delay,
     ["tdefer"]                        = task.defer,
 
+    ["CFrame"]                        = CFrame,
+    ["NewCFrame"]                     = CFrame.new,
+
     ["Vector2"]                       = Vector2,
     ["NewVector2"]                    = Vector2.new,
     ["Vector3"]                       = Vector3,
@@ -57,6 +60,9 @@ local Module = {
 
 for i, v in pairs(Module) do
   print("Added method:", i)
-  getgenv()[i] = v
-  task.wait(.05)
+  
+  if not getgenv()[i] then
+    getgenv()[i] = v
+    task.wait(.05)
+  end
 end
